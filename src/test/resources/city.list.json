@@ -1,0 +1,32 @@
+[
+    {
+        "id": 3168418,
+        "name": "San Donato di Lecce",
+        "state": "",
+        "country": "IT",
+        "coord": {
+            "lon": 18.184219,
+            "lat": 40.268131
+        }
+    },
+    {
+        "id": 3168429,
+        "name": "San Donà di Piave",
+        "state": "",
+        "country": "IT",
+        "coord": {
+            "lon": 12.56944,
+            "lat": 45.631672
+        }
+    },
+    {
+        "id": 3168430,
+        "name": "San Donaci",
+        "state": "",
+        "country": "IT",
+        "coord": {
+            "lon": 17.925119,
+            "lat": 40.45063
+        }
+    }
+]

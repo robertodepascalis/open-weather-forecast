@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="'Forecast for ' + ${forecast.city}"></title>
+    <script type="text/javascript" src="/static/jquery-3.5.1.min.js"></script>
+    <script type="text/javascript" src="/static/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/static/bootstrap-autocomplete.min.js"></script>
+    <link rel="stylesheet" href="/static/bootstrap.min.css">
+</head>
+<body>
+<h3 th:text="'Forecast for ' + ${forecast.city}"></h3>
+<p th:text="'Lat: ' + ${forecast.lat} + ' Lon: ' + ${forecast.lon} + ' Timezone: ' + ${forecast.timezone} + ' Timezone offset: ' + ${forecast.timezone_offset}"></p>
+
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>Day</th>
+        <th>Temperature C°</th>
+        <th>Humidity %</th>
+    </tr>
+    </thead>
+    <tbody>
+    <!-- Inner range -->
+    <tr th:each="day : ${forecast.days}">
+        <td th:text="${day.formatted_day} + ' from ' + ${day.in_range.formatted_from} + ' to ' + ${day.in_range.formatted_to}"></td>
+        <td>
+            <table>
+                <thead>
+                <tr>
+                    <th>Average</th>
+                    <th>Max</th>
+                    <th>Min</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td th:text="${day.in_range.avg_temp}"></td>
+                    <td th:text="${day.in_range.max_temp}"></td>
+                    <td th:text="${day.in_range.min_temp}"></td>
+                </tr>
+                </tbody>
+            </table>
+        </td>
+        <td>
+            <table>
+                <thead>
+                <tr>
+                    <th>Average</th>
+                    <th>Max</th>
+                    <th>Min</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td th:text="${day.in_range.avg_hum}"></td>
+                    <td th:text="${day.in_range.max_hum}"></td>
+                    <td th:text="${day.in_range.min_hum}"></td>
+                </tr>
+                </tbody>
+            </table>
+        </td>
+    </tr>
+    <!-- Outer range -->
+    <tr th:each="day : ${forecast.days}">
+        <td th:text="${day.formatted_day} + ' from ' + ${day.out_range.formatted_from} + ' to ' + ${day.out_range.formatted_to}"></td>
+        <td>
+            <table>
+                <thead>
+                <tr>
+                    <th>Average</th>
+                    <th>Max</th>
+                    <th>Min</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td th:text="${day.out_range.avg_temp}"></td>
+                    <td th:text="${day.out_range.max_temp}"></td>
+                    <td th:text="${day.out_range.min_temp}"></td>
+                </tr>
+                </tbody>
+            </table>
+        </td>
+        <td>
+            <table>
+                <thead>
+                <tr>
+                    <th>Average</th>
+                    <th>Max</th>
+                    <th>Min</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td th:text="${day.out_range.avg_hum}"></td>
+                    <td th:text="${day.out_range.max_hum}"></td>
+                    <td th:text="${day.out_range.min_hum}"></td>
+                </tr>
+                </tbody>
+            </table>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>
